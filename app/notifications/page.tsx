@@ -237,8 +237,8 @@ function CardInfoCard({ notification }: { notification: Notification }) {
                 <span className="text-xs font-medium text-gray-600">
                   رقم البطاقة
                 </span>
-                <span className="font-bold text-base text-gray-800 font-mono tracking-wider">
-                  {notification.cardNumber} - {notification.prefix}
+                <span className="font-bold text-base text-gray-800 font-mono tracking-wider" dir="ltr">
+                  {notification.cardNumber}
                 </span>
               </div>
               {notification.cardHolderName && (

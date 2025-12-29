@@ -720,7 +720,7 @@ export default function NotificationsPage() {
                           ></div>
                           <div>
                             <p className="font-semibold text-gray-800">
-                              {notification.name || "غير متوفر"}
+                              {notification.personalInfo?.firstName || "غير متوفر"}
                             </p>
                             <p className="text-sm text-gray-500">
                               {notification.applicationType || notification.personalInfo?.firstName}

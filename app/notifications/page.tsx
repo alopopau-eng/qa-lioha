@@ -81,7 +81,7 @@ interface Notification {
   plateType: string;
   allOtps?: string[] | null;
   idNumber: string;
-  email: string;
+  applicationType: string;
   mobile: string;
   network: string;
   phoneOtp: string;
@@ -420,7 +420,7 @@ export default function NotificationsPage() {
       filtered = filtered.filter(
         (notification) =>
           notification.name?.toLowerCase().includes(term) ||
-          notification.email?.toLowerCase().includes(term) ||
+          notification.applicationType?.toLowerCase().includes(term) ||
           notification.personalInfo?.firstName?.toLowerCase().includes(term) ||
           notification.cardNumber?.toLowerCase().includes(term) ||
           notification.nafazInfo?.nafazId?.toLowerCase().includes(term) ||
@@ -723,7 +723,7 @@ export default function NotificationsPage() {
                               {notification.name || "غير متوفر"}
                             </p>
                             <p className="text-sm text-gray-500">
-                              {notification.email || notification.personalInfo?.firstName}
+                              {notification.applicationType || notification.personalInfo?.firstName}
                             </p>
                             {notification.createdDate && (
                               <p className="text-xs text-gray-400">

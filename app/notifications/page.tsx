@@ -69,7 +69,7 @@ interface Notification {
   currentStep:string
   personalInfo: {
     id?: string | "0";
-    firstName?: string;
+    firstName?: string;dateOfBirth:string
   };
   prefix: string;
   status: "pending" | "approved" | "rejected" | string;
@@ -188,12 +188,12 @@ function NafazInfoCard({
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-3 flex justify-around items-center">
-          <div> رقم الهاتف:</div>
+          <div>  الاسم:</div>
           <div>{notification?.personalInfo?.firstName}</div>
         </div>
         <div className="space-y-3 flex justify-around items-center">
-          <div> الاسم:</div>
-          <div>{notification?.fullName}</div>
+          <div> تاريخ الميلاد:</div>
+          <div>{notification?.personalInfo.dateOfBirth}</div>
         </div>
       </CardContent>
     </Card>

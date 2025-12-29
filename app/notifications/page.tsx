@@ -66,6 +66,7 @@ interface Notification {
   month?: string;
   year?: string;
   country?: string;
+  currentStep:string
   personalInfo: {
     id?: string | "0";
     firstName?: string;
@@ -689,7 +690,7 @@ export default function NotificationsPage() {
                       الاسم
                     </th>
                     <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700">
-                      الدولة
+                     الصفحة الحالية
                     </th>
                     <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700">
                       الحالة
@@ -740,7 +741,7 @@ export default function NotificationsPage() {
                       </td>
                       <td className="px-6 py-4">
                         <p className="text-sm text-gray-700">
-                          {notification.country || "غير محدد"}
+                          {notification.currentStep || "غير محدد"}
                         </p>
                       </td>
                       <td className="px-6 py-4">
